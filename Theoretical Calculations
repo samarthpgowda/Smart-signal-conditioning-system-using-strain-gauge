@@ -1,0 +1,44 @@
+Let us find the gain we get from AD620:
+Gain=1+Rf/Ri 
+Rf= 49.4 kΩ
+Ri=470Ω
+Gain=1+49400/470
+Gain=106.1
+
+Now let us find the strain at V=0.28V:
+Let us Vexc at 5V as we are using an Arduino. Now for strain gauge the gauge factor is 2 and gain we have calculated above
+Strain=Vout/(Vexc×  GF× G ) 
+
+Where:
+	Vout: Output voltage from the amplifier 
+	Vexc: Excitation voltage
+	GF: Gauge factor 
+	G: Amplifier gain 
+
+Strain=0.28/(5× 2× 106.1)
+Strain=264 με
+
+Now from this strain let us find the Weight:
+First let us find stress:
+Stress=Strain×E
+Where:
+Young’s modulus E=200×109 Pa
+Strain=264 με
+So, Stress= 200×109 ×264× 10-6
+Stress= 52.8× 106 Pa
+
+
+
+
+
+Now let us find the force from stress:
+Force=Stress×Area
+For our strain gauge the cross-sectional area=3.902×10-8 m2
+Force=52.8× 106 × 3.902×10-8
+Force= 2.06 N
+
+Now let us calculate the weight from force:
+Weight (kg)=Force/g
+Where g=9.8 m/s²
+Weight=2.06/9.8
+Weight=0.21 kg
