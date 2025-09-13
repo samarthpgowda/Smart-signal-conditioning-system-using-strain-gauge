@@ -1,0 +1,49 @@
+Components used:
+•	Load cell Strain
+•	AD620 Instrumentation Amplifier
+•	TL081 Op-Amp
+•	Arduino
+•	470 resistors
+•	Bread board
+•	Connecting wires
+•	1N4448 diode
+
+Usage of each component:
+Component: Load Cell
+•	Function: Measures weight via deformation (strain).
+•	Why It’s Used: A load cell converts mechanical force (weight) into a very small analog electrical signal using strain gauges arranged in a Wheatstone bridge configuration.
+•	Notes: The output is typically in millivolts (e.g., 1–10 mV for full-scale loads), which is too small for direct reading by most microcontrollers. Needs precise amplification.
+
+Component: AD620 Instrumentation Amplifier
+•	Function: Accurately amplifies the small differential voltage signal from the load cell.
+•	Why It is Used: It has high input impedance, low offset, and low noise—ideal for measuring small signals like those from a load cell.
+•	Gain Control: Gain is set using a single resistor (RG). With RG = 470 Ω, gain = 106.1.
+•	Role: Boosts the millivolt signal to a voltage level (~0–5V) readable by Arduino’s ADC (Analog-to-Digital Converter).
+•	Why Not a Regular Op-Amp? Regular op-amps have issues with precision and common-mode rejection when amplifying small differential signals. AD620 handles these well.
+
+Component: Arduino 
+•	Function: Analog-to-Digital Converter, Microcontroller, and Power Supply.
+•	Why It’s Used: Reads the amplified signal, processes it using a calibration factor, and converts it to weight (in kg). Also powers the load cell and amplifier (typically via 5V output).
+•	ADC Details: Arduino’s ADC has 10-bit resolution, meaning it maps 0–5V to 0–1023.
+•	Extra: Can also display the output via Serial Monitor or LCD, and interface with wireless or cloud systems.
+
+Component: Gain Resistor (470 Ω)
+•	Function: Sets the gain of the AD620.
+•	Why It’s Used: Allows tuning of signal amplification so that maximum expected weight corresponds to a voltage < 5V (ADC limit).
+•	Impact: Higher gain improves signal sensitivity but risks clipping if input exceeds expected range.
+
+Component: TL081 Op-Amp 
+•	Function: Signal conditioning — filtering or buffering.
+•	Why It’s Used:
+o	Buffering: Prevents loading effects on the signal line.
+o	Filtering: Can be configured as a low-pass filter to remove high-frequency noise.
+.
+
+Component: 1N4448 Diode 
+•	Function: Over-voltage protection (clamping diode).
+•	Why It’s Used: Protects the Arduino’s analog input from voltage spikes >5V.
+•	How It Works: Shunts excess voltage to the supply rail or ground once it exceeds its threshold. Can be used with a second diode in reverse to clamp both directions.
+
+Component: Breadboard / Wires / PCB
+•	Function: Physical interconnection of components.
+•	Why It’s Used: For prototyping or creating a final circuit. Ensures reliable electrical connections.
