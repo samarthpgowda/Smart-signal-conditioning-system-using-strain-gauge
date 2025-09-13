@@ -1,0 +1,5 @@
+In this project, we developed a “Smart Signal Conditioning System Using Strain Gauge” to accurately measure weight. 
+The system utilizes a strain gauge sensor to detect minute deformations caused by applied force, converting mechanical strain into electrical signals.
+These signals are processed through a calibrated signal conditioning circuit to produce a readable voltage output. The setup ensures high 
+sensitivity and precision in weight measurement, making it suitable for industrial and laboratory applications. The processed data can be visualized
+and analyzed using microcontrollers or external systems, offering real-time monitoring and improved measurement reliability
